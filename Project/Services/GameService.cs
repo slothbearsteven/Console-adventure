@@ -69,8 +69,14 @@ namespace ConsoleAdventure.Project
     ///<summary>When taking an item be sure the item is in the current room before adding it to the player inventory, Also don't forget to remove the item from the room it was picked up in</summary>
     public void TakeItem(string itemName)
     {
+
+      //EXAMPLE FROM PLANES 
+      //     _game.Plane.Cargo.AddRange(_game.CurrentAirport.Pickups);
+      //     _game.CurrentAirport.Pickups.Clear();
       throw new System.NotImplementedException();
     }
+
+
     ///<summary>
     ///No need to Pass a room since Items can only be used in the CurrentRoom
     ///Make sure you validate the item is in the room or player inventory before
@@ -79,8 +85,22 @@ namespace ConsoleAdventure.Project
     public void UseItem(string itemName)
     {
       throw new System.NotImplementedException();
+
+
+
+      //EXAMPLE FROM PLANES 
+      //   _game.Plane.Cargo.RemoveAll(cargo =>
+      //     {
+      //       if (cargo.Destination == _game.CurrentAirport)
+      //       {
+      //         _game.Plane.AccountBalance += cargo.Reward;
+      //         deliveries++;
+      //         profits += cargo.Reward;
+      //         return true;
+      //       }
+      //       return false;
+      //     });
     }
   }
 }
-
 
