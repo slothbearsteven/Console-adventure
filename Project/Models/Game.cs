@@ -9,7 +9,7 @@ namespace ConsoleAdventure.Project.Models
     public IRoom CurrentRoom { get; set; }
     public IPlayer CurrentPlayer { get; set; }
 
-    public List<IItem> Pieces { get; set; }
+    public List<Item> Pieces { get; set; }
     //NOTE Make yo rooms here...
     public void Setup()
     {
@@ -38,13 +38,13 @@ namespace ConsoleAdventure.Project.Models
       SouthRoom.AddExit("north", CenterRoom);
       EastRoom.AddExit("west", CenterRoom);
 
-      Item strange1 = new Item("Strange Piece 1", "A strange glowing object, that seems to be the piece of something");
-      Item strange2 = new Item("Strange Piece 2", "A strange glowing object, that seems to be the piece of something");
-      Item strange3 = new Item("Strange Piece 3", "A strange glowing object, that seems to be the piece of something. It is different from any other pieces");
+      Item strangepiece1 = new Item("strangepiece1", "A strange glowing object, that seems to be the piece of something");
+      Item strangepiece2 = new Item("strangepiece2", "A strange glowing object, that seems to be the piece of something");
+      Item strangepiece3 = new Item("strangepiece3", "A strange glowing object, that seems to be the piece of something. It is different from any other pieces");
 
-      SouthRoom.Items.Add(strange3);
-      WestRoom.Items.Add(strange2);
-      EastRoom.Items.Add(strange3);
+      SouthRoom.Items.Add(strangepiece1);
+      WestRoom.Items.Add(strangepiece2);
+      EastRoom.Items.Add(strangepiece3);
 
       CurrentRoom = CenterRoom;
 

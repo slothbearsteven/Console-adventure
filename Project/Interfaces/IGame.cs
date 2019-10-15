@@ -10,7 +10,7 @@ namespace ConsoleAdventure.Project.Interfaces
 
     IRoom FinalRoom { get; set; }
 
-    List<IItem> Pieces { get; set; }
+    List<Item> Pieces { get; set; }
     void Setup();
   }
 }
