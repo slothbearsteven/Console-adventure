@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using ConsoleAdventure.Project.Interfaces;
 using ConsoleAdventure.Project.Models;
 
@@ -19,8 +18,35 @@ namespace ConsoleAdventure.Project
 
     public void What()
     {
-      Messages.Add("What should we do?");
+      if (_game.Pieces.Count > 2)
+      {
+        Messages.Add("Type Play to play again, or q to quit");
+      }
+      else
+      {
+        Messages.Add("What should we do?");
+      }
     }
+
+    public void decide(int x)
+    {
+
+      if (x == 2)
+      {
+        Quit();
+      }
+      else if (x == 1)
+      {
+
+        Console.Clear();
+        _game.CurrentPlayer.Inventory.Clear();
+        _game.Setup();
+        Setup();
+
+      }
+
+    }
+
     public void Go(string direction)
     {
 
@@ -135,50 +161,55 @@ namespace ConsoleAdventure.Project
     public void UseItem(string itemName)
     {
       List<Item> inv = _game.CurrentPlayer.Inventory;
+
+
       int index = inv.FindIndex(Item => Item.Name == itemName);
       Item item = inv[index];
-      if (_game.CurrentRoom == _game.FinalRoom)
+      if (index < inv.Count && index > -1)
       {
-
-        Messages.Add("You'd like to use this strange piece? *The stranger places the piece on what he described as an altar, and a peaceful hum is emmited* Looks like a good choice you made.");
-
-        _game.Pieces.Add(item);
-
-        inv.Remove(item);
-
-        if (_game.Pieces.Count > 2)
+        if (_game.CurrentRoom == _game.FinalRoom)
         {
-          Console.Clear();
-          Messages.Add(@"*As the stranger places the piece,a bright light shines, and somehow, you see it. Around you are now your friends and family in what appears to be a hospital room.*
+
+          Messages.Add("You'd like to use this strange piece? *The stranger places the piece on what he described as an altar, and a peaceful hum is emmited* Looks like a good choice you made.");
+
+          _game.Pieces.Add(item);
+
+          inv.Remove(item);
+
+          if (_game.Pieces.Count > 2)
+          {
+            Console.Clear();
+            Messages.Add(@"*As the stranger places the piece,a bright light shines, and somehow, you see it. Around you are now your friends and family in what appears to be a hospital room.*
           
           Your Mother: YOU'RE AWAKE! We've been worried that would never happen.... the doctors were actually talking about disconnecting you from the machines. But here you are, pulling through last second. I knew we should have never let you go climbing. 
           
           *You ponder the last events, now knowing it was all in your mind as you laid in a coma. The nurses rush in the check your vitals, and discover you are just fine. Now you can go and live your life normally as any person would.");
 
-          Thread.Sleep(20000);
-          Environment.Exit(0);
+
+
+
+
+
+
+
+
+
+          }
+
+
+        }
+
+        else
+        {
+          Messages.Add("*A feeling comes over you that this isn't the right place to use that*");
         }
 
       }
-
       else
       {
-        Messages.Add("*A feeling comes over you that this isn't the right place to use that*");
+        Messages.Add("umm, we don't have such a thing");
       }
-
       What();
-      //EXAMPLE FROM PLANES 
-      //   _game.Plane.Cargo.RemoveAll(cargo =>
-      //     {
-      //       if (cargo.Destination == _game.CurrentAirport)
-      //       {
-      //         _game.Plane.AccountBalance += cargo.Reward;
-      //         deliveries++;
-      //         profits += cargo.Reward;
-      //         return true;
-      //       }
-      //       return false;
-      //     });
     }
 
 

@@ -49,11 +49,14 @@ namespace ConsoleAdventure.Project.Models
       CurrentRoom = CenterRoom;
 
       FinalRoom = NorthRoom;
+
+
     }
 
     public Game()
     {
       CurrentPlayer = new Player();
+      Pieces = new List<Item>();
       Setup();
     }
   }

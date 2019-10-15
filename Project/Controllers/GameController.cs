@@ -81,8 +81,10 @@ namespace ConsoleAdventure.Project.Controllers
           break;
 
         case "play":
-          _gameService.Setup();
+          _gameService.decide(1);
           break;
+
+
         default:
           Console.Write("What did you say?");
           break;
