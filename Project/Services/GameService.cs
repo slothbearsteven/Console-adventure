@@ -81,7 +81,7 @@ namespace ConsoleAdventure.Project
       if (_game.CurrentPlayer.Inventory.Count > 0)
       {
 
-        string template = "Inventory:\n";
+        string template = @$"Inventory:\n";
 
         foreach (var Item in _game.CurrentPlayer.Inventory)
         {
