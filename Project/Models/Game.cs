@@ -4,6 +4,7 @@ namespace ConsoleAdventure.Project.Models
 {
   public class Game : IGame
   {
+    public IRoom FinalRoom { get; set; }
     public IRoom CurrentRoom { get; set; }
     public IPlayer CurrentPlayer { get; set; }
 
@@ -44,6 +45,8 @@ namespace ConsoleAdventure.Project.Models
       EastRoom.Items.Add(strange3);
 
       CurrentRoom = CenterRoom;
+
+      FinalRoom = NorthRoom;
     }
 
     public Game()

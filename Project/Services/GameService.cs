@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ConsoleAdventure.Project.Interfaces;
 using ConsoleAdventure.Project.Models;
@@ -37,43 +38,55 @@ namespace ConsoleAdventure.Project
       (i)nventory= see the items you have
       (l)ook= get a description of the current room
       use {item}= use item specified
-      take {item}=add the item to your inventory");
+      take {item's number}=add the item  to your inventory");
     }
 
     public void Inventory()
     {
-      throw new System.NotImplementedException();
+      string template = "Inventory:\n";
+
+      foreach (var Item in _game.CurrentPlayer.Inventory)
+      {
+        template += @$"\t {Item.Name}\n \t \t {Item.Description} \n";
+      }
+
+      Messages.Add(template);
     }
 
     public void Look()
     {
-      throw new System.NotImplementedException();
+      Messages.Add(_game.CurrentRoom.Description);
     }
 
     public void Quit()
     {
-      throw new System.NotImplementedException();
+      Environment.Exit(0);
     }
     ///<summary>
     ///Restarts the game 
     ///</summary>
     public void Reset()
     {
-      throw new System.NotImplementedException();
+
     }
 
     public void Setup(string playerName)
     {
-      throw new System.NotImplementedException();
+      _game.Setup();
     }
     ///<summary>When taking an item be sure the item is in the current room before adding it to the player inventory, Also don't forget to remove the item from the room it was picked up in</summary>
-    public void TakeItem(string itemName)
+    public void TakeItem(int index)
     {
 
-      //EXAMPLE FROM PLANES 
-      //     _game.Plane.Cargo.AddRange(_game.CurrentAirport.Pickups);
-      //     _game.CurrentAirport.Pickups.Clear();
-      throw new System.NotImplementedException();
+      List<Item> items = _game.CurrentRoom.Items;
+
+      if (index < items.Count && index > -1)
+      {
+        Messages.Add($"You have obtained {items[index].Name}");
+        _game.CurrentPlayer.Inventory.Add(items[index]);
+        items.Remove(items[index]);
+      }
+
     }
 
 
@@ -84,7 +97,14 @@ namespace ConsoleAdventure.Project
     ///</summary>
     public void UseItem(string itemName)
     {
-      throw new System.NotImplementedException();
+      if (_game.CurrentRoom == _game.FinalRoom)
+      {
+
+        Messages.Add("You'd like to use this strange piece? *The stranger places the piece on what he described as an altar, and a peaceful hum is emmited* Looks like a good choice you made.");
+
+        _game.CurrentPlayer.Inventory.Remove()
+
+      }
 
 
 

@@ -2,11 +2,12 @@ using ConsoleAdventure.Project.Models;
 
 namespace ConsoleAdventure.Project.Interfaces
 {
-    public interface IGame
-    {
-        IRoom CurrentRoom { get; set; }
-        IPlayer CurrentPlayer { get; set; }
+  public interface IGame
+  {
+    IRoom CurrentRoom { get; set; }
+    IPlayer CurrentPlayer { get; set; }
 
-        void Setup();
-    }
+    IRoom FinalRoom { get; set; }
+    void Setup();
+  }
 }
