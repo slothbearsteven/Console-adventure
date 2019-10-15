@@ -73,13 +73,17 @@ namespace ConsoleAdventure.Project
     public void Setup(string playerName)
     {
       _game.Setup();
+
+      Messages.Add(@" I see you are waking up. Don't remember what happen? Well, it was a big fall you took from up there. 
+ Hmm.... you can't seem to see anymore.... in fact.... your eyes aren't even there. I take it something brought you or drove you here then whether you liked it or not. Are you an  experienced adventurer perhaps?
+");
     }
     ///<summary>When taking an item be sure the item is in the current room before adding it to the player inventory, Also don't forget to remove the item from the room it was picked up in</summary>
-    public void TakeItem(int index)
+    public void TakeItem(string itemName)
     {
 
       List<Item> items = _game.CurrentRoom.Items;
-
+      int index = items.FindIndex(Item => Item.Name == itemName);
       if (index < items.Count && index > -1)
       {
         Messages.Add($"You have obtained {items[index].Name}");
@@ -97,12 +101,16 @@ namespace ConsoleAdventure.Project
     ///</summary>
     public void UseItem(string itemName)
     {
+      List<Item> inv = _game.CurrentPlayer.Inventory;
+      int index = inv.FindIndex(Item => Item.Name == itemName);
       if (_game.CurrentRoom == _game.FinalRoom)
       {
 
         Messages.Add("You'd like to use this strange piece? *The stranger places the piece on what he described as an altar, and a peaceful hum is emmited* Looks like a good choice you made.");
 
-        _game.CurrentPlayer.Inventory.Remove()
+        _game.Pieces.Add(inv[index]);
+
+        inv.Remove(inv[index]);
 
       }
 

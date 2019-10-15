@@ -21,7 +21,7 @@ namespace ConsoleAdventure.Project.Interfaces
     //Validate CurrentRoom.Exits contains the desired direction
     //if it does change the CurrentRoom
     void Go(string direction);
-    void TakeItem(int index);
+    void TakeItem(string itemName);
     void UseItem(string itemName);
     //Print the list of items in the players inventory to the console
     void Inventory();

@@ -30,12 +30,14 @@ namespace ConsoleAdventure.Project.Controllers
       //NOTE this will take the user input and parse it into a command and option.
       //IE: take silver key => command = "take" option = "silver key"
 
+
+      // TODO need to make a switch to intake commands
     }
 
     //NOTE this should print your messages for the game.
     private void Print()
     {
-
+      //TODO need it so console writes list of messages.
     }
 
   }

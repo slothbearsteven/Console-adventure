@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using ConsoleAdventure.Project.Interfaces;
 
 namespace ConsoleAdventure.Project.Models
@@ -8,6 +9,7 @@ namespace ConsoleAdventure.Project.Models
     public IRoom CurrentRoom { get; set; }
     public IPlayer CurrentPlayer { get; set; }
 
+    public List<IItem> Pieces { get; set; }
     //NOTE Make yo rooms here...
     public void Setup()
     {
